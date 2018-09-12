@@ -1,0 +1,9 @@
+{
+  "name": "friendMaker",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "postcss-cli": "^6.0.0"
+  }
+}
