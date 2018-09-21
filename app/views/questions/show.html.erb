@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question number:</strong>
+  <%= @question.question_number %>
+</p>
+
+<p>
+  <strong>User a:</strong>
+  <%= @question.user_a_id %>
+</p>
+
+<p>
+  <strong>User q:</strong>
+  <%= @question.user_q_id %>
+</p>
+
+<p>
+  <strong>Delete flag:</strong>
+  <%= @question.delete_flag %>
+</p>
+
+<%= link_to 'Edit', edit_user_question_path(@question) %> |
+<%= link_to 'Back', user_questions_path %>

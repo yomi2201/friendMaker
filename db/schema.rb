@@ -10,20 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_071005) do
+ActiveRecord::Schema.define(version: 2018_09_21_100745) do
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "question"
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "question_id"
     t.string "answer"
+    t.boolean "delete_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "original_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "question_id"
+    t.string "original_question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "target_id"
+    t.integer "profile_q_number"
+    t.string "profile_a"
+    t.boolean "delete_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "question_number"
+    t.integer "user_a_id"
+    t.integer "user_q_id"
+    t.boolean "delete_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "animal"
-    t.string "color"
+    t.integer "icon_animal", default: 0, null: false
+    t.integer "icon_color", default: 0, null: false
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
