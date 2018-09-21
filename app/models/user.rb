@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :user_posts, class_name: 'Post', :foreign_key => 'user_id'
-  has_many :target_posts, class_name: 'Post', :foreign_key => 'target_id'
+  has_many :user_questions, class_name: 'Question', :foreign_key => 'user_q_id'
+  has_many :user_answers, class_name: 'Question', :foreign_key => 'user_a_id'
+  has_many :profiles, :foreign_key => 'user_id'
 
 end
