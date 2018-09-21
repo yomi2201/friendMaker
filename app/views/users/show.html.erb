@@ -16,15 +16,15 @@
 </p>
 
 <p>
-  <% @user.posts.each do |post| %>
+  <% @user.user_posts.each do |post| %>
     質問：
-    <%= link_to post.question, post_path(post) %>
+    <%= link_to post.question, user_post_path(@user,post) %>
     </br>
   <% end %>
 </p>
 
 <p>
-  <%= link_to '質問を作る', new_post_path(@user) %>
+  <%= link_to '質問を作る', new_user_post_path(@user) %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

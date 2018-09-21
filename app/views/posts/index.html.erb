@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
 
@@ -19,10 +18,10 @@
         <td><%= post.question %></td>
         <td><%= post.answer %></td>
         <td><%= post.user.name %></td>
-        <td><%= post.target_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.target.name if post.target.present? %></td>
+        <td><%= link_to 'Show', user_post_path(post.user, post) %></td>
+        <td><%= link_to 'Edit', edit_user_post_path(post.user, post) %></td>
+        <td><%= link_to 'Destroy', user_post_path(post.user, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_user_post_path %>

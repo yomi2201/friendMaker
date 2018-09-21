@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :posts
+  has_many :user_posts, class_name: 'Post', :foreign_key => 'user_id'
+  has_many :target_posts, class_name: 'Post', :foreign_key => 'target_id'
 
 end
