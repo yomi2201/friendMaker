@@ -17,7 +17,7 @@
 
 <p>
   <% @user.user_answers.each do |user_answer| %>
-    <%= user_answer.user_question.name %>からもらった質問：
+    <%= user_answer.question_user.name %>からもらった質問：
     <%= user_answer.question_number %>
     </br>
       <% if user_answer.answer.answer.nil? %>

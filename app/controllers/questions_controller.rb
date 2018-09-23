@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
       if @question.save
         @answer = Answer.new(question_id:  @question.id)
         @answer.save
-        format.html { redirect_to user_path(@question.user_answer), notice: 'Question was successfully created.' }
+        format.html { redirect_to user_path(@question.answer_user), notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
