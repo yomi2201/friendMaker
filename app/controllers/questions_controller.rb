@@ -3,9 +3,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   # GET /questions.json
-  def index
-    @questions = Question.all
-  end
+  # def index
+  #   @questions = Question.all
+  # end
 
   # GET /questions/1
   # GET /questions/1.json
@@ -31,7 +31,9 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to user_questions_path, notice: 'Question was successfully created.' }
+        @answer = Answer.new(question_id:  @question.id)
+        @answer.save
+        format.html { redirect_to user_path(@question.user_answer), notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -42,17 +44,17 @@ class QuestionsController < ApplicationController
 
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
-  def update
-    respond_to do |format|
-      if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
-      else
-        format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @question.update(question_params)
+  #       format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @question }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @question.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /questions/1
   # DELETE /questions/1.json

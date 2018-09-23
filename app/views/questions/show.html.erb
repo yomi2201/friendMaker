@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <strong>User a:</strong>
-  <%= @question.user_a_id %>
+  <strong>回答してほしい人:</strong>
+  <%= @question.user_answer.name %>
 </p>
 
 <p>
-  <strong>User q:</strong>
-  <%= @question.user_q_id %>
+  <strong>質問した人:</strong>
+  <%= @question.user_question.name %>
 </p>
 
 <p>
@@ -20,5 +20,5 @@
   <%= @question.delete_flag %>
 </p>
 
-<%= link_to 'Edit', edit_user_question_path(@question) %> |
+|
 <%= link_to 'Back', user_questions_path %>

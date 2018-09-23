@@ -9,7 +9,8 @@
       <th>回答する人</th>
       <th>質問した人</th>
       <th>Delete flag</th>
-      <th colspan="3"></th>
+      <th>回答</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -20,8 +21,8 @@
         <td><%= question.user_answer.name %></td>
         <td><%= question.user_question.name %></td>
         <td><%= question.delete_flag %></td>
+        <td><%= question.answer.answer if question.answer.present? %></td>
         <td><%= link_to 'Show', user_question_path(question.user_q_id,question) %></td>
-        <td><%= link_to 'Edit', edit_user_question_path(question.user_q_id,question) %></td>
         <td><%= link_to 'Destroy', user_question_path(question.user_q_id,question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

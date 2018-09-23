@@ -7,6 +7,8 @@
     <tr>
       <th>Question</th>
       <th>Answer</th>
+      <th>質問した人</th>
+      <th>回答する人</th>
       <th>Delete flag</th>
       <th colspan="3"></th>
     </tr>
@@ -17,10 +19,12 @@
       <tr>
         <td><%= answer.question_id %></td>
         <td><%= answer.answer %></td>
+        <td><%= answer.question.user_question.name %></td>
+        <td><%= answer.question.user_answer.name %></td>
         <td><%= answer.delete_flag %></td>
-        <td><%= link_to 'Show', answer %></td>
-        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_answer_path(answer,answer) %></td>
+        <td><%= link_to 'Edit', edit_user_answer_path(answer,answer) %></td>
+        <td><%= link_to 'Destroy', user_answer_path(answer,answer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Answer', new_answer_path %>
+<%= link_to 'New Answer', new_user_answer_path %>
