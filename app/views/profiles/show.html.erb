@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user_id %>
+</p>
+
+<p>
+  <strong>Profile q number:</strong>
+  <%= @profile.profile_q_number %>
+</p>
+
+<p>
+  <strong>Profile a:</strong>
+  <%= @profile.profile_a %>
+</p>
+
+<p>
+  <strong>Delete flag:</strong>
+  <%= @profile.delete_flag %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

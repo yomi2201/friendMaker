@@ -78,3 +78,5 @@ gem "kaminari"
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'social-share-button'
+
+gem 'mysql2'

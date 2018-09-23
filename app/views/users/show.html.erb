@@ -7,24 +7,24 @@
 
 <p>
   <strong>Animal:</strong>
-  <%= @user.animal %>
+  <%= @user.icon_animal %>
 </p>
 
 <p>
   <strong>Color:</strong>
-  <%= @user.color %>
+  <%= @user.icon_color %>
 </p>
 
 <p>
-  <% @user.posts.each do |post| %>
+  <% @user.user_questions.each do |question| %>
     質問：
-    <%= link_to post.question, post_path(post) %>
+    <%= link_to question.question_number, user_question_path(@user) %>
     </br>
   <% end %>
 </p>
 
 <p>
-  <%= link_to '質問を作る', new_post_path(@user) %>
+  <%= link_to '質問を作る', new_user_question_path(@user) %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

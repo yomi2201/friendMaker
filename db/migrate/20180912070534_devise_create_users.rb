@@ -3,8 +3,8 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.string :animal
-      t.string :color
+      t.integer :icon_animal, null: false, default: 0
+      t.integer :icon_color, null: false, default: 0
       t.string :name
       ## Database authenticatable
       t.string :email,              null: false, default: ""

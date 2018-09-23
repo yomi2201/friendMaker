@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Original Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Original question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @original_questions.each do |original_question| %>
+      <tr>
+        <td><%= original_question.question_id %></td>
+        <td><%= original_question.original_question %></td>
+        <td><%= link_to 'Show', original_question %></td>
+        <td><%= link_to 'Edit', edit_original_question_path(original_question) %></td>
+        <td><%= link_to 'Destroy', original_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Original Question', new_original_question_path %>
