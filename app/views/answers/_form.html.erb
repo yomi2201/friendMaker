@@ -1,4 +1,4 @@
-<%= form_with(model: answer, local: true) do |form| %>
+<%= form_with(model: answer, url: user_answer_path, local: true) do |form| %>
   <% if answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>

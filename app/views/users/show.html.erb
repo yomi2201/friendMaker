@@ -16,15 +16,23 @@
 </p>
 
 <p>
-  <% @user.user_questions.each do |question| %>
-    質問：
-    <%= link_to question.question_number, user_question_path(@user) %>
+  <% @user.user_answers.each do |user_answer| %>
+    <%= user_answer.user_question.name %>からもらった質問：
+    <%= user_answer.question_number %>
+    </br>
+      <% if user_answer.answer.answer.nil? %>
+      　<%= link_to '回答する', edit_user_answer_path(@user, user_answer.answer) %>
+      <% else %>
+        　回答：　<%= user_answer.answer.answer %>　
+      <% end %>　 
     </br>
   <% end %>
 </p>
 
 <p>
-  <%= link_to '質問を作る', new_user_question_path(@user) %>
+　<% if @user != current_user %>
+    <%= link_to '質問を作る', new_user_question_path(@user) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
