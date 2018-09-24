@@ -15,6 +15,9 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @question.build_original_question
+    @question.build_answer
+    @user = User.find(params[:user_id])
   end
 
   # GET /questions/1/edit
@@ -31,8 +34,6 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        @answer = Answer.new(question_id:  @question.id)
-        @answer.save
         format.html { redirect_to user_path(@question.answer_user), notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
@@ -74,6 +75,16 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question_number, :user_a_id, :user_q_id, :delete_flag)
+      params.require(:question).permit(:question_number, :user_a_id, :user_q_id, :delete_flag,
+         original_question_attributes: [
+           :id,
+           :question_id,
+           :original_question
+         ],
+         answer_attributes: [
+          :id,
+          :question_id,
+          :answer
+        ])
     end
 end
