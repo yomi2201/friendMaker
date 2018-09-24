@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :question_number %>
-    <%= form.number_field :question_number %>
+    <%= form.label :質問を選んでください %>
+    </br>
+    <%= form.select :question_number, Question.question_numbers.keys %>
   </div>
 
 
