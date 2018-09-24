@@ -1,29 +1,29 @@
 <h2>ログイン</h2>
 
-<p class='descSlide'>
-  ここに使い方のスライドが入ります。
-</p>
-  <style>
-    .descSlide {height: 300px;}
-  </style>
-
-
+<div class='desc-slide'>
+  <ul class="slides">
+    <li><img src="animalicon/icon1_1.png" width="400" height:="400" alt="Image 1"></li>
+    <li><img src="animalicon/icon2_2.png" width="400" height:="400" alt="Image 2"></li>
+    <li><img src="animalicon/icon3_3.png" width="400" height:="400" alt="Image 3"></li>
+    <li><img src="animalicon/icon4_4.png" width="400" height:="400" alt="Image 4"></li>
+    <li><img src="animalicon/icon5_5.png" width="400" height:="400" alt="Image 5"></li>
+    <li><img src="animalicon/icon6_6.png" width="400" height:="400" alt="Image 6"></li>
+  </ul>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label 'ログイン状態を保存' %>
     </div>
   <% end -%>
 
