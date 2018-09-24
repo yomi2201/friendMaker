@@ -17,6 +17,19 @@
     <%= form.select :question_number, Question.question_numbers.keys %>
   </div>
 
+  <div class="field">
+    <%= form.label :オリジナル質問を作ってください %>
+    </br>
+    <%= form.fields_for :original_question, @question.original_question do |t| %>
+      <%= t.text_field :original_question %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.fields_for :answer, @question.answer do |t| %>
+      <%= t.hidden_field :question_id, value: @question %>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

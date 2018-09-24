@@ -2,7 +2,9 @@ class Question < ApplicationRecord
     belongs_to :question_user, class_name: 'User', :foreign_key => 'user_q_id'
     belongs_to :answer_user, class_name: 'User', :foreign_key => 'user_a_id'
     has_one :answer
-    has_many :original_questions
+    accepts_nested_attributes_for :answer
+    has_one :original_question
+    accepts_nested_attributes_for :original_question
 
 
     enum question_number:
@@ -16,6 +18,7 @@ class Question < ApplicationRecord
             小学校の思い出を教えてください。
             尊敬している人は誰ですか？
             愛読書は何ですか？
+            オリジナル質問を作る
         )
 
 end

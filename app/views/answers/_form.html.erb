@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :question_id %>
-    <%= form.number_field :question_id %>
+    <%= form.label :届いた質問 %>：
+    <%= answer.question.question_number %>
   </div>
 
   <div class="field">
-    <%= form.label :answer %>
+    <%= form.label :あなたの回答 %>
     <%= form.text_field :answer %>
   </div>
 
