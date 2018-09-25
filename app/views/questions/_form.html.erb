@@ -14,14 +14,14 @@
   <div class="field">
     <%= form.label :質問を選んでください %>
     </br>
-    <%= form.select :question_number, Question.question_numbers.keys %>
+    <%= form.select :q_number, Question.q_numbers.keys %>
   </div>
 
   <div class="field">
     <%= form.label :オリジナル質問を作ってください %>
     </br>
-    <%= form.fields_for :original_question, @question.original_question do |t| %>
-      <%= t.text_field :original_question %>
+    <%= form.fields_for :original, @question.original do |t| %>
+      <%= t.text_field :ori_question %>
     <% end %>
   </div>
 

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   
   resources :profiles do
-    resources :original_questions
+    resources :originals
   end
 
   devise_for :users, controllers: {

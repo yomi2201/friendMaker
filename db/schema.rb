@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_100745) do
+ActiveRecord::Schema.define(version: 2018_09_25_014732) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "question_id"
-    t.string "answer"
-    t.boolean "delete_flag"
+    t.string "content", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "original_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "originals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "question_id"
-    t.string "original_question"
+    t.string "ori_question", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_100745) do
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "question_number"
+    t.integer "q_number", default: 0, null: false
     t.integer "user_a_id"
     t.integer "user_q_id"
     t.boolean "delete_flag"

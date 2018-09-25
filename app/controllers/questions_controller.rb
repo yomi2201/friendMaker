@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :new, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -15,9 +16,8 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
-    @question.build_original_question
+    @question.build_original
     @question.build_answer
-    @user = User.find(params[:user_id])
   end
 
   # GET /questions/1/edit
@@ -29,12 +29,12 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_q_id = current_user.id
-    answer_user = User.find(params[:user_id])
-    @question.user_a_id = answer_user.id
+    a_user = User.find(params[:user_id])
+    @question.user_a_id = a_user.id
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to user_path(@question.answer_user), notice: 'Question was successfully created.' }
+        format.html { redirect_to user_path(@question.a_user), notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -62,7 +62,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to user_url(@user), notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,18 +73,22 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
 
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question_number, :user_a_id, :user_q_id, :delete_flag,
-         original_question_attributes: [
+      params.require(:question).permit(:q_number, :user_a_id, :user_q_id, :delete_flag,
+         original_attributes: [
            :id,
            :question_id,
-           :original_question
+           :ori_question
          ],
          answer_attributes: [
           :id,
           :question_id,
-          :answer
+          :content
         ])
     end
 end
