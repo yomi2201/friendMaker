@@ -16,18 +16,18 @@
 </p>
 
 <p>
-  <% @user.user_answers.each do |user_answer| %>
-    <%= user_answer.question_user.name %>からもらった質問：
-    <% if user_answer.original_question.original_question == '' %>
-      <%= user_answer.question_number %>
-    <% else %>
-      <%= user_answer.original_question.original_question %>
-    <% end %>
-    </br>
-      <% if user_answer.answer.answer.nil? %>
-      　<%= link_to '回答する', edit_user_answer_path(@user, user_answer.answer) %>
+  <% @user.a_user_questions.each do |q| %>
+    <%= q.q_user.name %>からもらった質問：
+      <% if q.original.ori_question == '' %>
+        <%= q.q_number %>
       <% else %>
-        　回答：　<%= user_answer.answer.answer %>　
+        <%= q.original.ori_question %>
+      <% end %>
+    </br>
+      <% if q.answer.content == '' %>
+      　<%= link_to '回答する', edit_user_answer_path(@user, q.answer) %>
+      <% else %>
+        　回答：　<%= q.answer.content %>　
       <% end %>　 
     </br>
   <% end %>

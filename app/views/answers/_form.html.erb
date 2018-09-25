@@ -13,17 +13,16 @@
 
   <div class="field">
     <%= form.label :届いた質問 %>：
-    <%= answer.question.question_number %>
+    <% if answer.question.q_number == '質問を選びましょう' %>
+      <%= answer.question.original.ori_question %>
+    <% else %>
+      <%= answer.question.q_number %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :あなたの回答 %>
-    <%= form.text_field :answer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delete_flag %>
-    <%= form.check_box :delete_flag %>
+    <%= form.text_field :content %>
   </div>
 
   <div class="actions">

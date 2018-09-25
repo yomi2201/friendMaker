@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @original.question_id %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @original.question %>
+</p>
+
+<%= link_to 'Edit', edit_original_path(@original) %> |
+<%= link_to 'Back', originals_path %>
