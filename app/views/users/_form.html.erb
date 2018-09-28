@@ -51,10 +51,6 @@
     </ul>
   </div>
 
-  <div class="field">
-    <%= form.label :icon_color %>
-    <%= form.number_field :icon_color %>
-  </div>
 
   <div class="action btn btn-success">
     <%= form.submit %>
@@ -87,8 +83,8 @@
       data: { user: { icon_color: index } },
       dataType: 'json',
       success: function(data){
-        $('#icon_animal').html(data.icon_animal),
-        console.log(data.icon_animal)
+        $('#icon_animal').html(data.icon_color),
+        console.log(data.icon_color)
       }
     })
   });
