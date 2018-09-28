@@ -21,7 +21,7 @@
     <%= form.label :オリジナル質問を作ってください %>
     </br>
     <%= form.fields_for :original, @question.original do |t| %>
-      <%= t.text_field :ori_question %>
+      <%= t.text_area :ori_question %>
     <% end %>
   </div>
 

@@ -8,7 +8,7 @@ class Question < ApplicationRecord
 
 
     enum q_number:
-        %i(質問を選びましょう
+        %i(オリジナル質問
             好きな食べ物なんですか
             好きな色はなんですか？
             海派？それとも山派？

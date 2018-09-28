@@ -18,7 +18,37 @@
 
   <div class="field">
     <%= form.label :icon_animal %>
-    <%= form.number_field :icon_animal %>
+  </div>
+
+  <div class='animal_list'>
+    <ul>
+      <li class="list_image">
+        <%= image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0" %>
+      </li>
+      <li class="list_image"><%= image_tag "animalicon/icon1_0.png", size: "50x50", alt: "Image 1" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon2_0.png", size: "50x50", alt: "Image 2" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon3_0.png", size: "50x50", alt: "Image 3" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon4_0.png", size: "50x50", alt: "Image 4" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon5_0.png", size: "50x50", alt: "Image 5" %></li>
+    </ul>
+  </div>
+
+  <div id='icon_animal'>
+    アイコンイメージ：</br>
+    <%= render 'icon', user: user %>
+  </div>
+
+  <div class='color_list'>
+    <ul>
+      <li class="list_image">
+        <%= image_tag "animalicon/icon#{user.icon_animal}_0.png", size: "50x50", alt: "Image 0" %>
+      </li>
+      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_1.png", size: "50x50", alt: "Image 1" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_2.png", size: "50x50", alt: "Image 2" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_3.png", size: "50x50", alt: "Image 3" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_4.png", size: "50x50", alt: "Image 4" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_5.png", size: "50x50", alt: "Image 5" %></li>
+    </ul>
   </div>
 
   <div class="field">
@@ -30,3 +60,36 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  //クリックで動物を選べます。
+  $(document).on("click", ".animal_list .list_image", function() {
+    var index = $(this).index()
+
+    $.ajax({
+      url: './',
+      type: 'PATCH',
+      data: { user: { icon_animal: index } },
+      dataType: 'json',
+      success: function(data){
+        $('#icon_animal').html(data.icon_animal),
+        console.log(data.icon_animal)
+      }
+    })
+  });
+  //クリックでカラーを選べます。
+  $(document).on("click", ".color_list .list_image", function() {
+    var index = $(this).index()
+
+    $.ajax({
+      url: './',
+      type: 'PATCH',
+      data: { user: { icon_color: index } },
+      dataType: 'json',
+      success: function(data){
+        $('#icon_animal').html(data.icon_animal),
+        console.log(data.icon_animal)
+      }
+    })
+  });
+</script>
