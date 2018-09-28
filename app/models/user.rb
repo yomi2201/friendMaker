@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :a_user_questions, class_name: 'Question', :foreign_key => 'user_a_id'
   has_many :profiles, :foreign_key => 'user_id'
 
+
 end
