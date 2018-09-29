@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: '更新されました！' }
-        format.json { render :show, status: :ok, location: @user }
+        format.json { render json: { src: icon_image_source }, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -64,6 +64,14 @@ class UsersController < ApplicationController
   # end
 
   private
+
+    def icon_image_source
+      image_path = "animalicon/icon#{@user.icon_animal}_#{@user.icon_color}.png"
+      img = self.class.helpers.image_tag(image_path)
+      Nokogiri::HTML.parse(img)
+        .search('img').first.attributes['src'].value
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
