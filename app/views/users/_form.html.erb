@@ -17,14 +17,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :icon_animal %>
+    <%= form.label :アイコンの動物を選びましょう　%>
   </div>
 
   <div class='animal_list'>
     <ul>
-      <li class="list_image">
-        <%= image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0" %>
-      </li>
+      <li class="list_image"><%= image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0" %></li>
       <li class="list_image"><%= image_tag "animalicon/icon1_0.png", size: "50x50", alt: "Image 1" %></li>
       <li class="list_image"><%= image_tag "animalicon/icon2_0.png", size: "50x50", alt: "Image 2" %></li>
       <li class="list_image"><%= image_tag "animalicon/icon3_0.png", size: "50x50", alt: "Image 3" %></li>
@@ -33,31 +31,39 @@
     </ul>
   </div>
 
+  <div class="field">
+    <%= form.label :アイコンの色を選びましょう %>
+  </div>
+
+  <div class='color_list'>
+    <ul>
+      <li class="list_image"><%= image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon0_1.png", size: "50x50", alt: "Image 1" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon0_2.png", size: "50x50", alt: "Image 2" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon0_3.png", size: "50x50", alt: "Image 3" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon0_4.png", size: "50x50", alt: "Image 4" %></li>
+      <li class="list_image"><%= image_tag "animalicon/icon0_5.png", size: "50x50", alt: "Image 5" %></li>
+    </ul>
+  </div>
+
   <div id='icon_animal'>
     アイコンイメージ：</br>
     <%= render 'icon', user: user %>
   </div>
 
-  <div class='color_list'>
-    <ul>
-      <li class="list_image">
-        <%= image_tag "animalicon/icon#{user.icon_animal}_0.png", size: "50x50", alt: "Image 0" %>
-      </li>
-      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_1.png", size: "50x50", alt: "Image 1" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_2.png", size: "50x50", alt: "Image 2" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_3.png", size: "50x50", alt: "Image 3" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_4.png", size: "50x50", alt: "Image 4" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon#{user.icon_animal}_5.png", size: "50x50", alt: "Image 5" %></li>
-    </ul>
-  </div>
-
   <div class="field">
-    <%= form.label :icon_color %>
-    <%= form.number_field :icon_color %>
+    </br>
+    <%= form.fields_for :profiles, user.profiles do |t| %>
+      <%= t.select :profile_q_number, Profile.profile_q_numbers.keys, prompt: '質問を選んでください' %>
+      </br>
+      <%= t.text_area :profile_a %>
+      </br>
+    <% end %>
   </div>
 
-  <div class="action btn btn-success">
-    <%= form.submit %>
+
+  <div class="action">
+    <%= form.submit '更新', class:"action btn btn-success" %>
   </div>
 <% end %>
 
@@ -87,8 +93,8 @@
       data: { user: { icon_color: index } },
       dataType: 'json',
       success: function(data){
-        $('#icon_animal').html(data.icon_animal),
-        console.log(data.icon_animal)
+        $('#icon_animal').html(data.icon_color),
+        console.log(data.icon_color)
       }
     })
   });
