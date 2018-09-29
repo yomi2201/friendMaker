@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+   3.times { @user.profiles.build } if @user.profiles.blank?
   end
 
   # POST /users
@@ -70,6 +71,13 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :icon_animal, :icon_color)
+      params.require(:user).permit(:name, :icon_animal, :icon_color,
+        profiles_attributes: [
+          :id,
+          :user_id,
+          :profile_q_number,
+          :profile_a,
+          :delete_flag,
+        ])
     end
 end

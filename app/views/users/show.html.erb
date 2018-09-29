@@ -4,8 +4,20 @@
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名前:</strong>
   <%= @user.name %>
+</p>
+
+<p>
+  <strong>プロフィール:</strong></br>
+  <% @user.profiles.each do |profile| %>
+    質問：
+    <%= profile.profile_q_number %>
+    </br>
+    質問の答え：
+    <%= profile.profile_a %>
+    </br>
+  <% end %>
 </p>
 
 <p>
