@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -51,12 +51,12 @@
     <%= render 'icon', user: user %>
   </div>
 
-  <div class="field">
+  <div class="field　form-group">
     </br>
     <%= form.fields_for :profiles, user.profiles do |t| %>
-      <%= t.select :profile_q_number, Profile.profile_q_numbers.keys, prompt: '質問を選んでください' %>
+      <%= t.select :profile_q_number, Profile.profile_q_numbers.keys, prompt: '質問を選んでください', class:"form-control" %>
       </br>
-      <%= t.text_area :profile_a %>
+      <%= t.text_area :profile_a, class:"form-control" %>
       </br>
     <% end %>
   </div>
