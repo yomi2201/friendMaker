@@ -78,8 +78,7 @@
       data: { user: { icon_animal: index } },
       dataType: 'json',
       success: function(data){
-        $('#icon_animal').html(data.icon_animal),
-        console.log(data.icon_animal)
+        $('#icon_animal > img').attr('src', data.src);
       }
     })
   });
@@ -93,8 +92,7 @@
       data: { user: { icon_color: index } },
       dataType: 'json',
       success: function(data){
-        $('#icon_animal').html(data.icon_color),
-        console.log(data.icon_color)
+        $('#icon_animal > img').attr('src', data.src);
       }
     })
   });
