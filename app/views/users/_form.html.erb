@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -22,12 +22,12 @@
 
   <div class='animal_list'>
     <ul>
-      <li class="list_image"><%= image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon1_0.png", size: "50x50", alt: "Image 1" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon2_0.png", size: "50x50", alt: "Image 2" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon3_0.png", size: "50x50", alt: "Image 3" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon4_0.png", size: "50x50", alt: "Image 4" %></li>
-      <li class="list_image"><%= image_tag "animalicon/icon5_0.png", size: "50x50", alt: "Image 5" %></li>
+      <li class="list_image"><%= image_tag "animalsilhouette/animal0.png", size: "50x50", alt: "Image 0" %></li>
+      <li class="list_image"><%= image_tag "animalsilhouette/animal1.png", size: "50x50", alt: "Image 1" %></li>
+      <li class="list_image"><%= image_tag "animalsilhouette/animal2.png", size: "50x50", alt: "Image 2" %></li>
+      <li class="list_image"><%= image_tag "animalsilhouette/animal3.png", size: "50x50", alt: "Image 3" %></li>
+      <li class="list_image"><%= image_tag "animalsilhouette/animal4.png", size: "50x50", alt: "Image 4" %></li>
+      <li class="list_image"><%= image_tag "animalsilhouette/animal5.png", size: "50x50", alt: "Image 5" %></li>
     </ul>
   </div>
 
@@ -51,12 +51,12 @@
     <%= render 'icon', user: user %>
   </div>
 
-  <div class="field">
+  <div class="field　form-group">
     </br>
     <%= form.fields_for :profiles, user.profiles do |t| %>
-      <%= t.select :profile_q_number, Profile.profile_q_numbers.keys, prompt: '質問を選んでください' %>
+      <%= t.select :profile_q_number, Profile.profile_q_numbers.keys, prompt: '質問を選んでください', class:"form-control" %>
       </br>
-      <%= t.text_area :profile_a %>
+      <%= t.text_area :profile_a, class:"form-control" %>
       </br>
     <% end %>
   </div>

@@ -23,16 +23,18 @@
 <p>
   <% @user.a_user_questions.each do |q| %>
     <%= q.q_user.name %>からもらった質問：
-      <% if q.original.ori_question == '' %>
-        <%= q.q_number %>
-      <% else %>
+      <% if q.original.present? %>
         <%= q.original.ori_question %>
+      <% else %>
+        <%= q.q_number %>
       <% end %>
     </br>
       <% if q.answer.content == '' %>
-      　<%= link_to '回答する', edit_user_answer_path(@user, q.answer) %>
+        <% if q.answer.question.a_user == current_user %>
+      　  <%= link_to '回答する', edit_user_answer_path(@user, q.answer) %>
+        <% end %>
       <% else %>
-        　回答：　<%= q.answer.content %>　
+        　回答：　<%= q.answer.content %>
       <% end %>　 
     </br>
   <% end %>
@@ -44,5 +46,7 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+ <% if @user == current_user %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+ <% end %>
 <%= link_to 'Back', users_path %>

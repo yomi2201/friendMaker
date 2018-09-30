@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
   has_many :q_user_questions, class_name: 'Question', :foreign_key => 'user_q_id'
   has_many :a_user_questions, class_name: 'Question', :foreign_key => 'user_a_id'
   has_many :profiles, dependent: :destroy
@@ -12,7 +11,5 @@ class User < ApplicationRecord
 
   MAX_PROFILES_LENGTH = 3
   validates :profiles, length: {maximum: MAX_PROFILES_LENGTH}
-
-
 
 end
